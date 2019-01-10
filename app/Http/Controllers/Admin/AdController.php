@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Ad;
-
+use Auth;
+use App\User;
 class AdController extends Controller
 {
     public function __construct()
@@ -19,8 +20,8 @@ class AdController extends Controller
      */
     public function index()
     {
-        $obqva = Ad::paginate(3);
-        return view('admin.ads.show')->with('obqva',$obqva);
+        $obqva = Ad::all();
+        return view('admin.ads.index')->with('obqva',$obqva);
     }
 
     /**
@@ -44,11 +45,20 @@ class AdController extends Controller
         $validated = $request->validate([
             'title' => 'required|max:100',
             'description' => 'required|max:1000',
+            //'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-
-        $obqva = new Ad;
+        $ad = new Ad;
+            $ad->image_url = 'error';
+        if($request->hasFile('image')) {
+            $image = $request->file('image');
+            $name = time().'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/photos');
+            $image->move($destinationPath, $name);
+            $ad->image_url = '/photos/'.$name;
+        }
         $ad->title = $validated['title'];
         $ad->description = $validated['description'];
+        $ad->user_id = Auth::user()->id;
         $ad->save();
         return redirect('/admin/ads');
         // $message = [
@@ -69,7 +79,7 @@ class AdController extends Controller
     public function show($id)
     {
         $ad = Ad::find($id);
-        return view ('admin.ads.show')->with('Ad',$ad);
+        return view ('admin.ads.show')->with('ad',$ad);
     }
 
     /**
@@ -96,11 +106,23 @@ class AdController extends Controller
         $validated = $request->validate([
             'title' => 'required|max:100',
             'description' => 'required|max:1000',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2000',
         ]);
 
         $obqva = new Ad;
         $ad->title = $validated['title'];
         $ad->description = $validated['description'];
+        
+        if($request->hasFile('image')) {
+            unlink($ad->image_url);
+
+            $image = $request->file('image');
+            $name = time().'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/photos');
+            $image->move($destinationPath, $name);
+            $ad->image_url = '/photos/'.$name;
+        }
+
         $ad->save();
         return redirect('/admin/ads');
     }
@@ -115,5 +137,12 @@ class AdController extends Controller
     {
         Ad::find($id)->delete();
         return redirect('/admin/ads');
+    }
+
+    public function approve($id) {
+        $ad = Ad::find($id);
+        $ad->pending = false;
+        $ad->save();
+        return redirect('/admin/ads/'.$id);
     }
 }

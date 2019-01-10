@@ -19,4 +19,5 @@ Auth::routes();
 
 Route::get('/admin', 'Admin\IndexController@index');
 Route::resource('/admin/ads', 'Admin\AdController');
+Route::get('/admin/ads/{id}/approve', 'Admin\AdController@approve');
 Route::get('/home', 'HomeController@index')->name('home');
