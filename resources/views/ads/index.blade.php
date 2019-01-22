@@ -2,6 +2,11 @@
 
 @section('content')
 
+@if ($own)
+    <a href="/ads" class="btn btn-primary">Всички обяви</a>
+@else
+    <a href="/ads?own=1" class="btn btn-warning">Твои обяви</a>
+@endif
 <div class="panel">
     <div class="row">
         @foreach ($ads as $ad)
