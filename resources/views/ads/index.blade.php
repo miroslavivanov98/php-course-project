@@ -7,11 +7,12 @@
 @else
     <a href="/ads?own=1" class="btn btn-warning">Твои обяви</a>
 @endif
+<a class="btn btn-primary" href="/ads/create" role="button"><i class="fas fa-plus"></i> Създаване</a>
 <div class="panel">
     <div class="row">
         @foreach ($ads as $ad)
             <div class="col-sm-12 col-lg-3 card">
-                <img class="card-img-top" src="{{$ad->image_url}}" alt="{{$ad->title}}">
+                <img class="card-img-top" style="height: 250px;" src="{{$ad->image_url}}" alt="{{$ad->title}}">
                 <div class="card-body">
                     <h5 class="card-title">{{$ad->title}}</h5>
                     <p class="card-text">{{$ad->description}}</p>

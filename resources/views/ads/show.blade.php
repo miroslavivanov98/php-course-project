@@ -20,6 +20,6 @@
                 @endif
             </div>
         </div>
-
+        <a class="btn btn-primary" href="/ads" role="button"><i class="fas fa-arrow-left"></i> Върни се</a>
     </div>
 @endsection

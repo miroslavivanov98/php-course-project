@@ -33,5 +33,6 @@
             {!!Form::submit('Submit', ['class' => 'btn btn-primary'])!!}
         </div>
         {!!Form::close()!!}
+        <a class="btn btn-primary" href="/ads/{{$ad->id}}" role="button"><i class="fas fa-arrow-left"></i> Върни се</a>
     </div>
 @endsection

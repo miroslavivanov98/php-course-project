@@ -134,6 +134,13 @@ class AdController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    
+    public function delete($id) {
+           $ad = Ad::find($id);
+           if(!$ad) abort(404);
+           return view('admin.ads.delete')->with('ad', $ad); 
+    }
     public function destroy($id)
     {
         Ad::find($id)->delete();

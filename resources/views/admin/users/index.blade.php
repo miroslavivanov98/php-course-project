@@ -25,5 +25,5 @@
         </tr>
     @endforeach
 </table>
-<a class="btn btn-default" href="/admin" role="button"><i class="fas fa-arrow-left"></i> Върни се</a>
+<a class="btn btn-primary" href="/admin" role="button"><i class="fas fa-arrow-left"></i> Върни се</a>
 @endsection

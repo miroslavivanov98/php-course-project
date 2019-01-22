@@ -21,6 +21,6 @@
                 <a href="/admin/ads/{{$ad->id}}/approve" class="btn btn-primary">Approve</a>
             @endif
         </div>
-        
+        <a class="btn btn-primary" href="/admin" role="button"><i class="fas fa-arrow-left"></i> Върни се</a>
     </div>
 @endsection

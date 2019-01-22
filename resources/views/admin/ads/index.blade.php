@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
+<a class="btn btn-primary" href="/admin/ads/create" role="button"><i class="fas fa-plus"></i> Създаване</a>
     <table class="table table-striped">
         <thead>
             <td>Id</td>

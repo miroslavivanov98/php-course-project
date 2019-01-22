@@ -13,6 +13,6 @@ class IndexController extends Controller
     }
 
     public function index() {
-        return "admin panel";
+        return redirect('/admin/ads');
     }
 }

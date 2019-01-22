@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container" style="width: 50%">
-            
+        <a class="btn btn-primary" href="/admin" role="button"><i class="fas fa-arrow-left"></i> Върни се</a> 
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
