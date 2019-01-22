@@ -24,3 +24,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/admin/users', 'Admin\AdminController@index');
 Route::get('/admin/users/{id}/admin/{admin}', 'Admin\AdminController@makeadmin');
+
+Route::resource('/ads', 'AdControler');

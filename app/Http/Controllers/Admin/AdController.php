@@ -20,8 +20,8 @@ class AdController extends Controller
      */
     public function index()
     {
-        $obqva = Ad::all();
-        return view('admin.ads.index')->with('obqva',$obqva);
+        $ad = Ad::all();
+        return view('admin.ads.index')->with('obqva',$ad);
     }
 
     /**
