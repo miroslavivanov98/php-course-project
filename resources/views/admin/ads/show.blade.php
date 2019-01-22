@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4" style="font-weight: bold; text-align: right">Photo</div>
-            <div class="col-md-8"><img src="{{$ad->image_url}}" alt="{{$ad->title}}"></div>
+            <div class="col-md-8"><img src="{{$ad->image_url}}" alt="{{$ad->title}}" width=500px></div>
         </div>
         <div class="row">
             <div class="col-md-4" style="font-weight: bold; text-align: right">Title</div>

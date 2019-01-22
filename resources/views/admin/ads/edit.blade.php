@@ -12,7 +12,7 @@
                     </ul>
                 </div>
             @endif
-            {!!Form::open(['route' => ['ad.update', $ad->id], 'method' => 'put'])!!}
+            {!!Form::open(['url' => '/admin/ads/'.$ad->id, 'method' => 'put', 'files' => true])!!}
             <div class="form-group">
                     {!!Form::label('image','Photo')!!}<br>
                     <input data-preview="#preview" name="image" type="file" id="imageInput">
@@ -21,12 +21,12 @@
             
             <div class="form-group">
                 {!!Form::label('title','Title')!!}
-                {!!Form::text('title', $ad->model, ['class' => 'form-control'])!!}
+                {!!Form::text('title', $ad->title, ['class' => 'form-control'])!!}
             </div>
 
             <div class="form-group">
                     {!!Form::label('description','Descritpiton')!!}
-                    {!!Form::textarea('description', $ad->model, ['class' => 'form-control'])!!}
+                    {!!Form::textarea('description', $ad->description, ['class' => 'form-control'])!!}
                 </div>
             
             <div class="form-group">

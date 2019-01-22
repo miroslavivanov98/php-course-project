@@ -45,7 +45,7 @@ class AdController extends Controller
         $validated = $request->validate([
             'title' => 'required|max:100',
             'description' => 'required|max:1000',
-            //'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'required|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
         $ad = new Ad;
             $ad->image_url = 'error';
@@ -91,7 +91,7 @@ class AdController extends Controller
     public function edit($id)
     {
         $ad = Ad::find($id);
-        return view ('admin.ads.edit')->with('Ad',$ad);
+        return view ('admin.ads.edit')->with('ad',$ad);
     }
 
     /**
@@ -103,22 +103,23 @@ class AdController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //throw new Exception("asdiasjd");
         $validated = $request->validate([
             'title' => 'required|max:100',
             'description' => 'required|max:1000',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2000',
+            'image' => 'nullable|mimes:jpeg,png,jpg,gif|max:2000',
         ]);
 
-        $obqva = new Ad;
+        $ad = Ad::find($id);
         $ad->title = $validated['title'];
         $ad->description = $validated['description'];
         
         if($request->hasFile('image')) {
-            unlink($ad->image_url);
+            unlink(public_path('').$ad->image_url);
 
             $image = $request->file('image');
             $name = time().'.'.$image->getClientOriginalExtension();
-            $destinationPath = public_path('/photos');
+            $destinationPath = public_path('/photos'); 
             $image->move($destinationPath, $name);
             $ad->image_url = '/photos/'.$name;
         }

@@ -15,7 +15,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
@@ -49,10 +49,15 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item"><a href="#">Admin Link 1</a></li>
-                            <li class="nav-item"><a href="#">Admin Link 2</a></li>
-                            <li class="nav-item"><a href="#">Admin Link 3</a></li>
-                            <li class="nav-item"><a href="#">Admin Link 4</a></li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/admin/">Admin Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/admin/ads">Ads</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/admin/users">Users</a>
+                            </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
