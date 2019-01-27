@@ -108,4 +108,12 @@ class AdControler extends Controller
         }
         //return error/redirect
     }
+    
+    public function search(Request $request){
+        $search = $request->get('search');
+        $ads = Ad::where('title','like','%'.$search.'%')->paginate(5);
+        //$ads = DB::table('ads')->where('title','like','%'.$search.'%')->paginate(5);
+        return view('admin.ads.index',['Ad'=>$ads]);
+    }
+
 }

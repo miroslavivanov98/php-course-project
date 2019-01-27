@@ -32,6 +32,19 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form action="/search" method="GET">
+                                {{ csrf_field() }}
+                                <div class="input-group">
+                                    <input type="search" placeholder="keyword" name="search" class="form-control">
+                                    <span class="intput-group-prepend">
+                                        <button type="submit" class="btn btn-primary">Search</button>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                     <ul class="navbar-nav mr-auto">
 
                     </ul>

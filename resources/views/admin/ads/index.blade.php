@@ -11,7 +11,7 @@
 
         </thead>
         <tbody>
-            @foreach ($obqva as $ad)
+            @foreach ($Ad as $ad)
                 <tr>
                     <td>{{$ad->id}}</td>
                     <td>{{$ad->title}}</td>

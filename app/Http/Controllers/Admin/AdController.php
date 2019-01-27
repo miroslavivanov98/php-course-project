@@ -18,10 +18,19 @@ class AdController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
     public function index()
     {
         $ad = Ad::all();
-        return view('admin.ads.index')->with('obqva',$ad);
+        return view('admin.ads.index')->with('Ad',$ad);
+    }
+    
+    public function search(Request $request){
+        $search = $request->get('search');
+        $ads = Ad::where('title','like','%'.$search.'%')->paginate(5);
+        //$ads = DB::table('ads')->where('title','like','%'.$search.'%')->paginate(5);
+        return view('admin.ads.index',['Ad'=>$ads]);
     }
 
     /**
