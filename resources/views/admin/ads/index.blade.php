@@ -27,4 +27,5 @@
             
         </tbody>
     </table>
+    {{$Ad->links()}}
 @endsection

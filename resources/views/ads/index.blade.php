@@ -20,6 +20,7 @@
                 </div>
             </div>
         @endforeach
+        {{$ads->links()}}
     </div>
 </div>
 

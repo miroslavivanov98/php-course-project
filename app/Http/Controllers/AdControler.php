@@ -9,17 +9,23 @@ use Illuminate\Http\Request;
 
 class AdControler extends Controller
 {
+    /*
+        User Ads Controller
+        Users can create, edit and delete their own ads
+    */
     public function __construct() {
         $this->middleware('auth'); //potrebitelq trqbva da e vlqzul v akaunt za da ima dostup do tozi kontroler
     }
     public function index() {
-        //return view ads.index with all Ads
+        
         if(isset($_GET['own']) && $_GET['own'] == 1) {
-            $ads = Ad::where('user_id', Auth::user()->id)->orderBy('id', 'DESC')->get();
+            //Return own ads
+            $ads = Ad::where('user_id', Auth::user()->id)->orderBy('id', 'DESC')->paginate(5); 
             $own = true;
         }
         else {
-            $ads = Ad::where('pending', false)->orderBy('id', 'DESC')->paginate(10);
+            //Return all ads
+            $ads = Ad::where('pending', false)->orderBy('id', 'DESC')->paginate(5);
             $own = false;
         }
         return view('ads.index')->with('ads', $ads)->with('own', $own);

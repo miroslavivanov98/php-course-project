@@ -16,6 +16,7 @@
             <td>{{$user->id}}</td>
             <td>{{$user->name}}</td>
             <td>{{$user->admin ? "Admin" : "User"}}</td>
+
             @if ($user->admin)
                 <td><a href="/admin/users/{{$user->id}}/admin/0" class="btn btn-primary">Remove Admin</a></td>
             @else
@@ -25,5 +26,7 @@
         </tr>
     @endforeach
 </table>
+{{$users->links()}}
+<!-- Send to Admin index page -->
 <a class="btn btn-primary" href="/admin" role="button"><i class="fas fa-arrow-left"></i> Върни се</a>
 @endsection

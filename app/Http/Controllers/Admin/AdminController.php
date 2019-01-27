@@ -21,13 +21,13 @@ class AdminController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $users = User::orderBy('id', 'DESC')->paginate(10);
+        $users = User::orderBy('id', 'DESC')->paginate(5);
         return view('admin.users.index')->with('users', $users);
 
     }
 
     /**
-     * Shows a listing of all users
+     * Makes a user an admin or removes privileges
      * 
      * @param int $id
      * @param int $admin

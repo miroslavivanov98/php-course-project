@@ -22,7 +22,7 @@ class AdController extends Controller
 
     public function index()
     {
-        $ad = Ad::all();
+        $ad = Ad::paginate(5);
         return view('admin.ads.index')->with('Ad',$ad);
     }
     

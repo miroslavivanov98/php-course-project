@@ -14,6 +14,7 @@
             </div>
             <div class="col sm-12 col-lg-9">
                 <p>{{$ad->description}}</p>
+                Създадена от {{$ad->user->name}}<br>
                 @if (Auth::check() && Auth::user()->id == $ad->user->id)
                     {{--Potrebitelq e sobstvenik na obqvata--}}
                     <a href="/ads/{{$ad->id}}/edit" class="btn btn-warning">Edit</a>
